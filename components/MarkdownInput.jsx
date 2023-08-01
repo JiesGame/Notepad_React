@@ -1,19 +1,27 @@
-import { useState } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 
-const MarkdownInput = () => {
-  const [area, setArea] = useState("");
+const MarkdownInput = ({ onSave }) => {
+  const [area, setArea] = React.useState("");
 
   const onChange = (e) => {
-    console.log(e.target.value)
     setArea(e.target.value);
+  };
+
+  const handleSaveClick = () => {
+    onSave(area);
   };
 
   return (
     <>
-      <textarea value={area} onChange={onChange} />
-      <button onClick={onChange}>Sauvegarder</button>
+      <textarea value={area} onChange={onChange} placeholder='Contenu de la note' />
+      <button onClick={handleSaveClick}>Sauvegarder</button>
     </>
   );
 };
 
-export default MarkdownInput
+MarkdownInput.propTypes = {
+  onSave: PropTypes.func.isRequired,
+};
+
+export default MarkdownInput;
