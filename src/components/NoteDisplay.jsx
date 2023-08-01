@@ -7,11 +7,12 @@ const NoteDisplay = ({ markdownText, markdownTitle }) => {
 
   return (
     <div>
-      <h1>{markdownTitle}</h1>
+      <h2 className="red text-2xl font-bold">{markdownTitle}</h2>
       <div dangerouslySetInnerHTML={{ __html: html }} />
     </div>
   );
 };
+
 
 NoteDisplay.propTypes = {
   markdownText: PropTypes.string.isRequired,
